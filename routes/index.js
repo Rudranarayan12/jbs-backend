@@ -1,0 +1,40 @@
+import express from "express";
+import authRouter from "./authRoutes.js";
+import userRouter from "./userRoutes.js";
+import productRouter from "./productRoutes.js";
+import categoryRouter from "./categoryRoutes.js";
+import orderRouter from "./orderRoutes.js";
+import queryRouter from "./queryRoutes.js";
+import attendanceRouter from "./attendanceRoutes.js";
+import fileUploadRouter from "./fileUploadRoutes.js";
+import taskRouter from "./taskRoutes.js";
+import materialRouter from "./materialRoutes.js";
+import requestRouter from "./requestRoutes.js";
+import transactionRouter from "./transactionRoutes.js";
+import salaryRouter from "./salaryRoutes.js";
+import notificationRouter from "./notificationRoutes.js";
+import statsRouter from "./statsRoutes.js";
+import leaveRouter from "./leaveRoutes.js";
+import { isAuthenticated } from "../middlewares/authMiddlewares.js";
+
+const router = express.Router();
+
+router.use("/auth", authRouter);
+router.use("/user", userRouter);
+router.use("/product", productRouter);
+router.use("/category", categoryRouter);
+router.use("/order", orderRouter);
+router.use("/category", categoryRouter);
+router.use("/query", queryRouter);
+router.use("/attendance", isAuthenticated, attendanceRouter);
+router.use("/task", taskRouter);
+router.use("/request", isAuthenticated, requestRouter);
+router.use("/material", isAuthenticated, materialRouter);
+router.use("/transaction", transactionRouter);
+router.use("/salary", salaryRouter);
+router.use("/notify", notificationRouter);
+router.use("/stats", statsRouter);
+router.use("/leave", isAuthenticated, leaveRouter);
+router.use("", fileUploadRouter);
+
+export default router;

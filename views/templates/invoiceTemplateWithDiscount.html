@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #1e1e1e;
+      }
+      .container {
+        margin: 30px 30px 30px 30px;
+        padding: 40px;
+        font-size: 16px;
+        width: 900px;
+        /* border: 1px solid #ddd; */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 850px;
+        height: 1200px;
+      }
+      .line {
+        height: 1px;
+        background-color: rgba(17, 16, 16, 0.653);
+        border: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .invoice {
+        width: 100%;
+      }
+      .footer {
+        margin-top: auto;
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="invoice">
+        <div class="part1">
+          <div class="part11" style="height: 104px">
+            <img
+              src="https://res.cloudinary.com/subhendu-spbp/image/upload/v1716891129/szqubydwarndfs771dfk.png"
+              alt="LOGO"
+              style="margin-top: 25px; height: 70px"
+            />
+
+            <div
+              class="mmhometown"
+              style="
+                height: 70px;
+                width: 250px;
+                margin-left: 82px;
+                margin-top: -84px;
+              "
+            >
+              <h3 style="margin-top: 15px; margin-bottom: 0">MM Hometown</h3>
+              <p style="margin-top: 1px; margin-bottom: 0">
+                Phone:123-456-7890
+              </p>
+              <p style="margin-top: 1px; margin-bottom: 0">
+                Email:info@mmhometown.com
+              </p>
+            </div>
+          </div>
+          <div
+            class="Business"
+            style="
+              text-align: end;
+              margin-top: -121px;
+              height: 70px;
+              width: 300px;
+              margin-left: 546px;
+            "
+          >
+            <p style="margin-top: 45px; margin-bottom: 0">
+              Address:Singh market complex, Raaz Hotel Chowk, Angul,Odisha
+              759122
+            </p>
+
+            <p style="margin-top: 1px; margin-bottom: 0">
+              Website: www.mmhometown.com
+            </p>
+            <p style="margin-top: 1px; margin-bottom: 0">
+              GSTIN 00XXXXX1234X0XX
+            </p>
+          </div>
+        </div>
+
+        <hr class="line" />
+
+        <div class="part2">
+          <div class="bill" style="width: 300px; margin-top: 30px">
+            <div>
+              <p>Bill to,</p>
+              <li style="list-style-type: none">
+                <strong>{{users.billName}}</strong>
+              </li>
+              <li style="list-style-type: none">{{users.billAddress}}</li>
+              <li style="list-style-type: none">{{users.billPhoneNo}}</li>
+            </div>
+            <div style="margin-top: 57px">
+              <p>Ship to,</p>
+              <li style="list-style-type: none">
+                <strong>{{users.shipName}}</strong>
+              </li>
+              <li style="list-style-type: none">{{users.shipAddress}}</li>
+              <li style="list-style-type: none">{{users.shipPhoneNo}}</li>
+            </div>
+          </div>
+          <div
+            class="invoicenumber"
+            style="
+              margin-top: -250px;
+              margin-left: 380px;
+              height: 300px;
+              width: 200px;
+            "
+          >
+            <div>
+              <p>Invoice number</p>
+              <p><strong>#{{users.invoiceNo}}</strong></p>
+            </div>
+            <div style="margin-top: 80px">
+              <p>Invoice date</p>
+              <p><strong>{{users.invoiceDate}}</strong></p>
+            </div>
+          </div>
+          <div
+            class="invoiceof"
+            style="
+              margin-left: 597px;
+              margin-top: -325px;
+              text-align: end;
+              height: 282px;
+              width: 245px;
+            "
+          >
+            <div>
+              <p style="font-size: 20px">Invoice of</p>
+              <h1 class="price" style="color: #642315">₹{{users.price}}</h1>
+            </div>
+          </div>
+        </div>
+
+        <hr class="line" />
+
+        <div class="row1" style="height: 20px">
+          <li style="list-style-type: none">ITEM DETAIL</li>
+          <li
+            style="list-style-type: none; margin-left: 310px; margin-top: -16px"
+          >
+            QTY
+          </li>
+          <li
+            style="list-style-type: none; margin-left: 420px; margin-top: -16px"
+          >
+            ₹ GROSS AMOUNT
+          </li>
+          <li
+            style="list-style-type: none; margin-left: 650px; margin-top: -20px"
+          >
+            % GST
+          </li>
+          <li style="list-style-type: none; text-align: end; margin-top: -18px">
+            ₹ TOTAL
+          </li>
+        </div>
+
+        <hr class="line" />
+
+        <div id="container">{{{users.itemData}}}</div>
+
+        <hr class="line" />
+
+        <div class="row3" style="margin-left: 50%; margin-bottom: 20px">
+          <div class="row33">
+            <div class="row333">
+              <li style="list-style-type: none">Subtotal</li>
+              <li style="list-style-type: none; margin-top: 5px">
+                Shipping Charges
+              </li>
+              <li style="list-style-type: none; margin-top: 5px">Discount</li>
+            </div>
+            <div class="row333" style="margin-left: 350px; margin-top: -67px">
+              <li style="list-style-type: none">₹{{users.subTotal}}</li>
+              <li style="list-style-type: none; margin-top: 5px">
+                +₹{{users.shippingCharges}}
+              </li>
+              <li style="list-style-type: none; margin-top: 5px">
+                -₹{{users.discount}}
+              </li>
+            </div>
+          </div>
+          <hr class="line" />
+          <div class="row33">
+            <div class="row333">
+              <li style="list-style-type: none"><strong>Total</strong></li>
+            </div>
+            <div class="row333" style="margin-left: 354px; margin-top: -19px">
+              <li style="list-style-type: none">
+                <strong> ₹ &nbsp;{{users.totalPrice}} </strong>
+              </li>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: end; margin-top: 0px">
+          <img
+            src="https://res-console.cloudinary.com/subhendu-spbp/media_explorer_thumbnails/a77d5206dfd5fcd992064134fcb7e032/detailed"
+            alt="signature"
+            style="width: 185px; height: 100px; margin-right: -4px"
+          />
+          <h3 style="margin: 0"><i>Authorize Signature</i></h3>
+        </div>
+      </div>
+      <div class="footer">
+        <hr class="line" />
+        <p>Thank you for your order!</p>
+        <p>
+          Expect your furniture delivery promptly. We strive for swift service
+          to meet your needs.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

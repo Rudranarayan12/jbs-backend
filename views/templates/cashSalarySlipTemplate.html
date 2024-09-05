@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>salary slip</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #1e1e1e;
+      }
+      .container {
+        margin: 30px 30px 30px 30px;
+        padding: 40px;
+        font-size: 16px;
+        width: 900px;
+        width: 850px;
+        height: 1200px;
+      }
+      .line {
+        height: 0.5px;
+        background-color: #282828;
+        border: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .invoice {
+        width: 100%;
+      }
+      .footer {
+        margin-top: auto;
+        padding-top: 20px;
+      }
+      li {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="invoice">
+        <div class="part1">
+          <div class="part11" style="height: 104px">
+            <img
+              src="https://res.cloudinary.com/subhendu-spbp/image/upload/v1716891129/szqubydwarndfs771dfk.png"
+              alt="LOGO"
+              style="margin-top: 25px; height: 70px"
+            />
+
+            <div
+              class="mmhometown"
+              style="
+                height: 70px;
+                width: 250px;
+                margin-left: 82px;
+                margin-top: -84px;
+              "
+            >
+              <h3 style="margin-top: 15px; margin-bottom: 0">MM Hometown</h3>
+              <p style="margin-top: 1px; margin-bottom: 0">
+                Phone:123-456-7890
+              </p>
+              <p style="margin-top: 1px; margin-bottom: 0">
+                Email:info@mmhometown.com
+              </p>
+            </div>
+          </div>
+          <div
+            class="Business"
+            style="
+              text-align: end;
+              margin-top: -121px;
+              height: 70px;
+              width: 300px;
+              margin-left: 546px;
+            "
+          >
+            <p style="margin-top: 45px; margin-bottom: 0">
+              Address:Singh market complex, Raaz Hotel Chowk, Angul,Odisha
+              759122
+            </p>
+
+            <p style="margin-top: 1px; margin-bottom: 0">
+              Website: www.mmhometown.com
+            </p>
+            <p style="margin-top: 1px; margin-bottom: 0">
+              GSTIN 00XXXXX1234X0XX
+            </p>
+          </div>
+        </div>
+
+        <hr class="line" />
+
+        <div class="part2">
+          <div class="bill" style="width: 300px; margin-top: 30px">
+            <div>
+              <p>Employee Details</p>
+              <li style="list-style-type: none">Name:{{users.empName}}</li>
+              <li style="list-style-type: none">Employee ID:{{users.empId}}</li>
+              <li style="list-style-type: none">
+                Department:{{users.empDepartment}}
+              </li>
+              <li style="list-style-type: none">
+                Designation: {{users.empDesignation}}
+              </li>
+              <li style="list-style-type: none">
+                Date of Joining: {{users.empJoining}}
+              </li>
+            </div>
+          </div>
+          <div
+            class="invoicenumber"
+            style="
+              margin-top: -180px;
+              margin-left: 380px;
+              height: 122px;
+              width: 200px;
+            "
+          >
+            <div>
+              <p>Slip number</p>
+              <p><strong>#{{users.empSlipNumber}}</strong></p>
+            </div>
+            <div style="margin-top: 60px">
+              <p>Generate date</p>
+              <p><strong>{{users.generateDate}}</strong></p>
+            </div>
+          </div>
+          <div
+            class="invoiceof"
+            style="
+              margin-left: 597px;
+              margin-top: -145px;
+              text-align: end;
+              height: 190px;
+              width: 245px;
+            "
+          >
+            <div>
+              <h1 class="price" style="color: #642315">Salary slip</h1>
+            </div>
+          </div>
+        </div>
+
+        <hr class="line" />
+
+        <div class="row1" style="height: 20px">
+          <li style="list-style-type: none"><strong>DETAIL</strong></li>
+        </div>
+
+        <hr class="line" />
+
+        <div id="container">
+          <div>
+            <div>
+              <li style="list-style-type: none"><strong>Earnings</strong></li>
+              <li style="list-style-type: none">Basic</li>
+              <li style="list-style-type: none">Allowances</li>
+              <li style="list-style-type: none">Overtime</li>
+              <li style="list-style-type: none">Commission</li>
+            </div>
+            <div style="text-align: end; margin-top: -141px">
+              <li style="list-style-type: none"><strong>₹ Amount</strong></li>
+              <li style="list-style-type: none">{{users.basicPrice}}</li>
+              <li style="list-style-type: none">{{users.allowancesPrice}}</li>
+              <li style="list-style-type: none">{{users.overTimePrice}}</li>
+              <li style="list-style-type: none">{{users.commissionPrice}}</li>
+            </div>
+          </div>
+          <hr class="line" />
+          <div style="margin-left: 50%">
+            <li style="list-style-type: none">Total Earnings</li>
+            <li
+              style="list-style-type: none; text-align: end; margin-top: -29px"
+            >
+              {{users.totalEarnings}}
+            </li>
+          </div>
+          <hr class="line" />
+          <div style="margin-top: 15px; margin-bottom: 15px">
+            <div style="width: 40%">
+              <li style="list-style-type: none"><strong>Deductions</strong></li>
+              <li style="list-style-type: none">Tax</li>
+              <li style="list-style-type: none">Other</li>
+            </div>
+            <div style="text-align: end; margin-top: -90px">
+              <li style="list-style-type: none"><strong>₹ Amount</strong></li>
+              <li style="list-style-type: none">{{users.taxPrice}}</li>
+              <li style="list-style-type: none">{{users.otherPrice}}</li>
+            </div>
+          </div>
+          <hr class="line" />
+          <div style="margin-left: 50%">
+            <div>
+              <li style="list-style-type: none">Total Deductions</li>
+              <li style="list-style-type: none"><strong>Net Salary</strong></li>
+            </div>
+            <div style="text-align: end; margin-top: -58px">
+              <li style="list-style-type: none">{{users.totalDeduction}}</li>
+              <li style="list-style-type: none">
+                <strong>{{users.netSalary}}</strong>
+              </li>
+            </div>
+          </div>
+          <div style="margin-top: 120px; margin-bottom: 70px">
+            <li style="list-style-type: none">
+              <strong>Payment Details</strong>
+            </li>
+            <li style="list-style-type: none">
+              Payment Date:{{users.paymentDate}}
+            </li>
+            <li style="list-style-type: none">
+              Payment Method: {{users.paymentMethod}}
+            </li>
+          </div>
+          <div style="text-align: end; margin-top: -100px">
+            <img
+              src="https://res.cloudinary.com/subhendu-spbp/image/upload/v1718860651/mkwyngophnsxucexmuvq.png"
+              alt="signature"
+              style="width: 185px; height: 100px; margin-right: -4px"
+            />
+            <h3 style="margin: 0"><i>Authorize Signature</i></h3>
+          </div>
+        </div>
+
+        <hr class="line" />
+      </div>
+      <div class="footer">
+        <!-- <p>Thank you for your order!</p>
+        <p>
+          Expect your furniture delivery promptly. We strive for swift service
+          to meet your need
+        </p> -->
+      </div>
+    </div>
+  </body>
+</html>

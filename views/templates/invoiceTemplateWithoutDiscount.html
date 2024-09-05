@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: #1e1e1e;
+      }
+      .container {
+        margin: 30px 30px 30px 30px;
+        padding: 40px;
+        font-size: 16px;
+        width: 900px;
+        /* border: 1px solid #ddd; */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 850px;
+        height: 1200px;
+      }
+      .line {
+        height: 1px;
+        background-color: rgba(17, 16, 16, 0.653);
+        border: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .invoice {
+        width: 100%;
+      }
+      .footer {
+        margin-top: auto;
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="invoice">
+        <div class="part1">
+          <div class="part11" style="height: 104px">
+            <img
+              src="https://res.cloudinary.com/subhendu-spbp/image/upload/v1716891129/szqubydwarndfs771dfk.png"
+              alt="LOGO"
+              style="margin-top: 25px; height: 70px"
+            />
+
+            <div
+              class="mmhometown"
+              style="
+                height: 70px;
+                width: 250px;
+                margin-left: 82px;
+                margin-top: -84px;
+              "
+            >
+              <h3 style="margin-top: 15px; margin-bottom: 0">MM Hometown</h3>
+              <p style="margin-top: 1px; margin-bottom: 0">
+                Phone:123-456-7890
+              </p>
+              <p style="margin-top: 1px; margin-bottom: 0">
+                Email:info@mmhometown.com
+              </p>
+            </div>
+          </div>
+          <div
+            class="Business"
+            style="
+              text-align: end;
+              margin-top: -121px;
+              height: 70px;
+              width: 300px;
+              margin-left: 546px;
+            "
+          >
+            <p style="margin-top: 45px; margin-bottom: 0">
+              Address:Singh market complex, Raaz Hotel Chowk,
+              Angul,Odisha 759122
+            </p>
+
+            <p style="margin-top: 1px; margin-bottom: 0">
+              Website: www.mmhometown.com
+            </p>
+            <p style="margin-top: 1px; margin-bottom: 0">
+              GSTIN 00XXXXX1234X0XX
+            </p>
+          </div>
+        </div>
+
+        <hr class="line" />
+
+        <div class="part2">
+          <div class="bill" style="width: 300px; margin-top: 30px">
+            <div>
+              <p>Bill to,</p>
+              <li style="list-style-type: none">
+                <strong>{{users.billName}}</strong>
+              </li>
+              <li style="list-style-type: none">{{users.billAddress}}</li>
+              <li style="list-style-type: none">{{users.billPhoneNo}}</li>
+            </div>
+            <div style="margin-top: 57px">
+              <p>Ship to,</p>
+              <li style="list-style-type: none">
+                <strong>{{users.shipName}}</strong>
+              </li>
+              <li style="list-style-type: none">{{users.shipAddress}}</li>
+              <li style="list-style-type: none">{{users.shipPhoneNo}}</li>
+            </div>
+          </div>
+          <div
+            class="invoicenumber"
+            style="
+              margin-top: -250px;
+              margin-left: 380px;
+              height: 300px;
+              width: 200px;
+            "
+          >
+            <div>
+              <p>Invoice number</p>
+              <p><strong>#{{users.invoiceNo}}</strong></p>
+            </div>
+            <div style="margin-top: 80px">
+              <p>Invoice date</p>
+              <p><strong>{{users.invoiceDate}}</strong></p>
+            </div>
+          </div>
+          <div
+            class="invoiceof"
+            style="
+              margin-left: 597px;
+              margin-top: -325px;
+              text-align: end;
+              height: 282px;
+              width: 245px;
+            "
+          >
+            <div>
+              <p style="font-size: 20px">Invoice of</p>
+              <h1 class="price" style="color: #642315">₹{{users.price}}</h1>
+            </div>
+          </div>
+        </div>
+
+        <hr class="line" />
+
+        <div class="row1" style="height: 20px">
+          <li style="list-style-type: none">ITEM DETAIL</li>
+          <li
+            style="list-style-type: none; margin-left: 310px; margin-top: -16px"
+          >
+            QTY
+          </li>
+          <li
+            style="list-style-type: none; margin-left: 420px; margin-top: -16px"
+          >
+            ₹ GROSS AMOUNT
+          </li>
+          <li
+            style="list-style-type: none; margin-left: 650px; margin-top: -20px"
+          >
+            % GST
+          </li>
+          <li style="list-style-type: none; text-align: end; margin-top: -18px">
+            ₹ TOTAL
+          </li>
+        </div>
+
+        <hr class="line" />
+
+        <div id="container">
+          {{{users.itemData}}}
+
+          <!-- <div class="row2" style="height: 44px">
+            <div class="row22" style="width: 325px; margin-top: 22px">
+              <div>
+                <li style="list-style-type: none">
+                  <strong>{{users.item.itemName}}</strong>
+                </li>
+                <li style="list-style-type: none">Product ID - {{users.item.itemId}}</li>
+              </div>
+            </div>
+            <div
+              class="row22"
+              style="margin-left: 317px; margin-top: -40px; width: 150px"
+            >
+              <li style="list-style-type: none">{{users.item.itemQuantity}}</li>
+            </div>
+            <div
+              class="row22"
+              style="margin-left: 440px; margin-top: -18px; width: 150px"
+            >
+              <li style="list-style-type: none">{{users.item.itemGrossAmount}}</li>
+            </div>
+            <div
+              class="row22"
+              style="margin-left:640px; margin-top: -19px; width: 150px"
+            >
+              <li style="list-style-type: none">{{users.item.itemPrice}}</li>
+            </div>
+            <div
+              class="row22"
+              style="margin-top: -19px; width: 150px;text-align: end; "
+            >
+              <li style="list-style-type: none">{{users.item.itemPrice}}</li>
+            </div>
+          </div>  -->
+        </div>
+
+        <hr class="line" />
+
+        <div class="row3" style="margin-left: 50%; margin-bottom: 20px">
+          <div class="row33">
+            <div class="row333">
+              <li style="list-style-type: none">Subtotal</li>
+              <li style="list-style-type: none; margin-top: 5px">
+                Shipping Charges
+              </li>
+            </div>
+            <div class="row333" style="margin-left: 350px; margin-top: -36px">
+              <li style="list-style-type: none">₹{{users.subTotal}}</li>
+              <li style="list-style-type: none; margin-top: 5px">
+                +₹{{users.shippingCharges}}
+              </li>
+            </div>
+          </div>
+          <hr class="line" />
+          <div class="row33">
+            <div class="row333">
+              <li style="list-style-type: none"><strong>Total</strong></li>
+              <li style="list-style-type: none">
+                Deposit Paid (Before Delivery)
+              </li>
+            </div>
+            <div class="row333" style="margin-left: 354px; margin-top: -36px">
+              <li style="list-style-type: none">₹{{users.totalPrice}}</li>
+              <li style="list-style-type: none">
+                ₹{{users.paidBeforeDelivery}}
+              </li>
+            </div>
+          </div>
+          <hr class="line" />
+          <div class="row33">
+            <div class="row333">
+              <li style="list-style-type: none; margin-top: 20px">
+                Balance Due (After Delivery)
+              </li>
+            </div>
+            <div class="row333">
+              <li
+                style="
+                  list-style-type: none;
+                  margin-left: 356px;
+                  margin-top: -17px;
+                "
+              >
+                ₹{{users.paidAfterDelivery}}
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p>
+          <i>This is a computer generated invoice. No signature required.</i>
+        </p>
+        <hr class="line" />
+        <p>Thank you for your order!</p>
+        <p>
+          Expect your furniture delivery promptly. We strive for swift service
+          to meet your needs.
+        </p>
+      </div>
+    </div>
+    <!-- <script>
+      const users = [
+        {
+          itemName: "Sample Item 1",
+          itemQuantity: 10,
+          grossAmount: 200,
+          itemPrice: 20,
+          itemId: "#001452",
+        },
+        {
+          itemName: "Sample Item 2",
+          itemQuantity: 5,
+          grossAmount: 100,
+          itemPrice: 10,
+          itemId: "#001453",
+        },
+        {
+          itemName: "Sample Item 3",
+          itemQuantity: 7,
+          grossAmount: 140,
+          itemPrice: 14,
+          itemId: "#001454",
+        },
+      ];
+
+      function createRow22(styles, content) {
+        const row22 = document.createElement("div");
+        row22.className = "row22";
+        Object.assign(row22.style, styles);
+        const li = document.createElement("li");
+        li.style.listStyleType = "none";
+        li.innerHTML = content;
+        row22.appendChild(li);
+        return row22;
+      }
+
+      users.forEach((user) => {
+        const row2 = document.createElement("div");
+        row2.className = "row2";
+        row2.style.height = "80px";
+
+        row2.appendChild(
+          createRow22(
+            { width: "325px", marginTop: "22px" },
+            `<strong>${user.itemName}</strong>`
+          )
+        );
+        row2.appendChild(
+          createRow22({ width: "325px", marginTop: "6px" }, user.itemId)
+        );
+        row2.appendChild(
+          createRow22(
+            { marginLeft: "315px", marginTop: "-40px", width: "150px" },
+            user.itemQuantity
+          )
+        );
+        row2.appendChild(
+          createRow22(
+            { marginLeft: "450px", marginTop: "-18px", width: "150px" },
+            user.grossAmount
+          )
+        );
+        row2.appendChild(
+          createRow22(
+            { marginLeft: "640px", marginTop: "-19px", width: "150px" },
+            user.itemPrice
+          )
+        );
+        row2.appendChild(
+          createRow22(
+            { marginLeft: "770px", marginTop: "-19px", width: "150px" },
+            user.itemPrice
+          )
+        );
+
+        document.getElementById("container").appendChild(row2);
+      });
+    </script> -->
+  </body>
+</html>
